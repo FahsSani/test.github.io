@@ -5,90 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timechain Index</title>
     <link rel="stylesheet" href="codes/styles.css">
+    <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="codes/small-device.css" />
     <link rel="stylesheet" type="text/css" href="codes/DataTable/jquery.dataTables.min.css">    
     <link rel="stylesheet" type="text/css" href="codes/DataTable/colReorder.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="codes/DataTable/fixedHeader.dataTables.min.css">
-    <style>
-        #datatable_wrapper {
-            text-align: right; /* Position the wrapper content to the right */
-        }
-
-        #datatable_filter {
-            float: right; /* Float the filter to the right */
-        }
-
-        #datatable_filter label {
-            font-size: 16px;
-            display: inline-block;
-            margin-right: 0px; /* Adjust as needed */
-        }
-
-        #datatable_filter input[type="search"] {
-            width: 250px; /* Adjust width as needed */
-            height: 30px; /* Adjust height as needed */
-        }
-
-
-        #datatable_length label {
-            font-size: 0px;
-        }
-
-        #datatable_length select {
-            width: 100px;
-        }
-
-        #datatable_info,
-        .paginate_button *,
-        .dataTables_paginate * {
-            color: white;
-            font-size: 0px;
-        }
-
-        #title {
-          display: flex;
-          justify-content: center; /* Aligns items horizontally at the center */
-          align-items: ceter; /* Aligns items vertically at the center */
-          margin-bottom: 10px; /* Adjust spacing */
-          color: white;
-          font-size: 20px;
-          letter-spacing: 2px;
-          font-weight: bold;
-          }
-
-        #dt-buttons {
-          display: flex;
-          justify-content: center; /* Align items horizontally at the center */
-          align-items: flex-end; /* Align items vertically at the bottom */
-        }
-
-        .dt-buttons button {
-          width: 70px;
-          height: 20px;
-          padding: 2px 0px; /* Adjust padding to change the margins around the text */
-          margin-bottom: 30px; /* Adjust the margin-top value as needed */
-          color: black;
-          font-weight: bold;
-          font-size: 12px;
-        }
-
-        #datatable_filter {
-          display: flex;
-          margin-top: -30px; /* Adjust the margin-top value as needed */
-          margin-bottom: -15px; /* Adjust the margin-top value as needed */
-          justify-content: center; /* Align items horizontally at the center */
-          align-items: flex-end; /* Align items vertically at the bottom */
-        }
-
-        #datatables_buttons_info {
-          font-size: 0px;
-        }
-
-        .dt-button-info {
-          font-size: 0px;
-       }
-    </style>
 </head>
-
 <body>
     <button id="toggle-btn" onclick="toggleMenu()">E
     N
