@@ -2,7 +2,7 @@
 @media only screen and (max-width: 767px) {
   /* Adjust font size for mobile */
   body {
-    font-size: 12px; /* Adjust the font size as needed */
+    font-size: 4px; /* Adjust the font size as needed */
   }
 
   /* Adjust table size for mobile */
@@ -15,7 +15,7 @@
   /* Adjust table font size for mobile */
   #DataTableContainer th,
   #DataTableContainer td {
-    font-size: 10px; /* Adjust the font size as needed */
+    font-size: 4px; /* Adjust the font size as needed */
   }
 
   /* Adjust other elements as needed */
