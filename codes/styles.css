@@ -15,7 +15,7 @@
   /* Adjust table font size for mobile */
   #DataTableContainer th,
   #DataTableContainer td {
-    font-size: 12px; /* Adjust the font size as needed */
+    font-size: 10px; /* Adjust the font size as needed */
   }
 
   /* Adjust other elements as needed */
