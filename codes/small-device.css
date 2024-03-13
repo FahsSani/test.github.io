@@ -20,13 +20,13 @@ body {
 }
 
 #datatable_filter label {
-  font-size: 8px;
+  font-size: 10px;
   display: inline-block;
   margin-right: 0px;
 }
 
 #datatable_filter input[type="search"] {
-  width: 125px;
+  width: 175px;
   height: 10px;
 }
 
@@ -64,7 +64,7 @@ body {
 
 .dt-buttons button {
   width: 50px;
-  height: 25px;
+  height: 18px;
   padding: 2px 0px;
   margin-bottom: 30px;
   color: black;
@@ -413,7 +413,7 @@ button:hover {
 #menu a {
   text-decoration: none;
   color: #61dafb;
-  font-size: 10px;
+  font-size: 8px;
   padding: 1px 1px;
   display: block;
   transition: background-color 0.3s ease;
