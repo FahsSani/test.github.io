@@ -1,20 +1,3 @@
-/* CSS for zoomed-out content on mobile devices */
-@media only screen and (max-width: 767px) {
-  /* Adjust the scale value as needed */
-  #main,
-  #menu,
-  #topContainer,
-  #dataContainer,
-  #bottomContainer {
-    transform: scale(0.8); /* Adjust the scale value as needed */
-    transform-origin: 0 0; /* Set the origin of the scaling */
-  }
-}
-
-
-
-
-/* General styling for the entire body */
 body {
   background-color: #080808;
   color: #dcdcdc;
@@ -30,94 +13,90 @@ body {
 }
 
 #datatable_wrapper {
-    text-align: left; /* Position the wrapper content to the left */
+  text-align: right;
 }
 
 #datatable_filter {
-    float: none; /* Remove floating */
-    text-align: left; /* Position the filter to the left */
+  float: right;
 }
 
 #datatable_filter label {
-    font-size: 16px;
-    display: inline-block;
-    margin-right: 0px; /* Adjust as needed */
+  font-size: 16px;
+  display: inline-block;
+  margin-right: 0px;
 }
 
 #datatable_filter input[type="search"] {
-    width: 250px; /* Adjust width as needed */
-    height: 30px; /* Adjust height as needed */
+  width: 250px;
+  height: 30px;
 }
 
 #datatable_length label {
-    font-size: 0px;
+  font-size: 0px;
 }
 
 #datatable_length select {
-    width: 100px;
+  width: 100px;
 }
 
 #datatable_info,
 .paginate_button *,
 .dataTables_paginate * {
-    color: white;
-    font-size: 0px;
+  color: white;
+  font-size: 0px;
 }
 
 #title {
-    display: flex;
-    justify-content: flex-start; /* Aligns items horizontally at the start */
-    align-items: center; /* Aligns items vertically at the center */
-    margin-bottom: 10px; /* Adjust spacing */
-    color: white;
-    font-size: 20px;
-    letter-spacing: 2px;
-    font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 2px;
+  font-weight: bold;
 }
 
 #dt-buttons {
-    display: flex;
-    justify-content: flex-start; /* Align items horizontally at the start */
-    align-items: flex-end; /* Align items vertically at the bottom */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .dt-buttons button {
-    width: 70px;
-    height: 20px;
-    padding: 2px 0px; /* Adjust padding to change the margins around the text */
-    margin-bottom: 30px; /* Adjust the margin-top value as needed */
-    color: black;
-    font-weight: bold;
-    font-size: 12px;
+  width: 70px;
+  height: 20px;
+  padding: 2px 0px;
+  margin-bottom: 30px;
+  color: black;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 #datatable_filter {
-    display: flex;
-    margin-top: -30px; /* Adjust the margin-top value as needed */
-    margin-bottom: -15px; /* Adjust the margin-top value as needed */
-    justify-content: flex-start; /* Align items horizontally at the start */
-    align-items: flex-end; /* Align items vertically at the bottom */
+  display: flex;
+  margin-top: -30px;
+  margin-bottom: -15px;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 #datatables_buttons_info {
-    font-size: 0px;
+  font-size: 0px;
 }
 
 .dt-button-info {
-    font-size: 0px;
+  font-size: 0px;
 }
 
-        
-/* Styling for the top container */
 #topContainer {
   display: flex;
   height: 9vh;
   width: 100vw;
-  align-items: flex-start; /* Aligns items along the cross axis */
+  align-items: flex-start;
   justify-content: center;
 }
 
-/* Styling for the topmenu container */
 #topmenuContainer {
   padding: 5px;
   flex: 1;
@@ -125,7 +104,6 @@ body {
   flex-direction: column;
 }
 
-/* Styling for the dynamic menu */
 #dynamicMenu {
   height: 7vh;
   width: 98.5vw;
@@ -175,146 +153,12 @@ body {
   color: #457b9d;
 }
 
-/* Styling for the primary menu */
-#ExpandedMenu1 {
-  display: none;
-  position: absolute;
-  margin-top: 6.63vh;
-  background-color: #333;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid #61dafb;  overflow-y: auto;
-  z-index: 1;
-  width: 16vw;
-  max-height: 50vh;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  text-align: center;
-}
-
-#ExpandedMenu1 a {
-  text-decoration: none;
-  font-size: 14px;
-  color: #61dafb;
-  font-color: #61dafb; 
-  background-color: #333;
-  padding: 1px 1px;
-  display: block;
-  transition: background-color 0.3s ease;
-  margin: 5px auto;
-}
-
-#ExpandedMenu1 a:hover {
-  background-color: #457b9d;
-}
-
-#ExpandedMenu1.visible {
-  display: block;
-}
-
-/* Styles for the scrollbar in the entities list */
-#ExpandedMenu {
-  margin-top: 39px;
-  max-height: 85vh;
-  width: 33vh;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #007bff #f5f5f5;
-}
-
-#ExpandedMenu::-webkit-scrollbar {
-  width: 12px;
-}
-
-#ExpandedMenu::-webkit-scrollbar-thumb {
-  background-color: #61dafb;
-  border-radius: 6px;
-}
-
-#ExpandedMenu::-webkit-scrollbar-track {
-  background-color: #f5f5f5;
-  border-radius: 6px;
-}
-
-
-#ExpandedMenu1::-webkit-scrollbar,
-#ExpandedMenu2::-webkit-scrollbar {
-  width: 12px;
-}
-
-#ExpandedMenu1::-webkit-scrollbar-thumb,
-#ExpandedMenu2::-webkit-scrollbar-thumb {
-  background-color: #61dafb;
-  border-radius: 6px;
-}
-
-#ExpandedMenu1::-webkit-scrollbar-track,
-#ExpandedMenu2::-webkit-scrollbar-track {
-  background-color: #f5f5f5;
-  border-radius: 6px;
-}
-
-/* Styling for the search container */
-#searchContainer {
-  margin-left: -17px;
-  margin-right: 34px;
-  margin-top: 5px;
-  width: 81vw;
-  height: 7.05vh;
-  display: flex;
-}
-
-.search-container {
-  border: 1px solid #61dafb;
-  width: 81.5vw;
-  height: 3.9vh;
-  margin-top: 1.4px;
-  margin-right: 2px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-#searchInput {
-  flex: 1;
-  height: 6.4vh;
-  width: 2px;
-  padding: 7px;
-  margin-right: 1px;
-  border-radius: 5px;
-  box-sizing: border-box;
-  color: #dcdcdc;
-  background-color: #333;
-  font-size: 16px;
-}
-
-.fetch-arrow {
-  padding: 1.72vh;
-  margin-bottom: 0px;
-  margin-top: 0px;
-  background-color: #61dafb;
-  color: #080808;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  font-size: 14px;
-  align-self: flex-start;
-}
-
-.fetch-arrow:hover {
-  background-color: #457b9d;
-}
-
-/* Styling for content area */
 #content {
   flex-grow: 1;
   padding: 5px;
   box-sizing: border-box;
 }
 
-/* Styling for headings and tabs */
 h1 {
   color: #61dafb;
   font-size: 1px;
@@ -328,7 +172,6 @@ h1 {
   margin-bottom: 1px;
 }
 
-/* Styling for tabs and tab content */
 .tab {
   padding: 1px 1px;
   background-color: #61dafb;
@@ -356,7 +199,6 @@ h1 {
   max-height: 300px;
 }
 
-/* Styling for labels, selects, inputs, and buttons */
 label {
   display: block;
   margin: 10px 0;
@@ -412,7 +254,6 @@ button:hover {
   margin-top: 5px;
 }
 
-/* Styling for DataTableContainer (table container) */
 #DataTableContainer {
   height: 77.6vh;
   max-width: 100vw;
@@ -424,7 +265,6 @@ button:hover {
   border: 1px solid #61dafb;
 }
 
-/* Styling for the table inside DataTableContainer */
 #DataTableContainer table {
   border-collapse: collapse;
   width: 100%;
@@ -467,15 +307,13 @@ button:hover {
   border-radius: 6px;
 }
 
-/* Animation for menuTab dropdown */
 .menuTab.active {
   display: block;
 }
 
-/* Styling for the bottom container */
 #bottomContainer {
   display: flex;
-  height: 5vh; /* Adjust the height as needed */
+  height: 5vh;
   max-width: 100vw;
   overflow-y: auto;
   margin-top: 8px;
@@ -484,22 +322,21 @@ button:hover {
   border-radius: 10px;
   padding: 0px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  text-align: left; /* Align the text to the left */
+  text-align: left;
   background-color: #2c2c2c;
   border: 1px solid #61dafb;
   color: #dcdcdc;
-  /* Removed duplicate display and align-items */
 }
 
 #bottomContainer .center-container {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center horizontally */
-  margin: 0 auto; /* Center vertically */
+  justify-content: center;
+  margin: 0 auto;
   font-weight: bold;
   flex-grow: 1;
   font-size: 15px;
-  padding: 0 10px; /* Adjust padding as needed */
+  padding: 0 10px;
   border: 0px solid #61dafb;
   text-align: center;
 }
@@ -508,18 +345,13 @@ button:hover {
 #bottomContainer .center-container span,
 #bottomContainer .center-container input {
   margin: 0;
-  display: inline-block; /* Make sure the text aligns properly */
+  display: inline-block;
 }
 
 #bottomContainer .center-container span {
-  margin: 0 5px; /* Adjust margin as needed */
+  margin: 0 5px;
 }
 
-
-
-
-
-/* Styling for the table inside bottomContainer */
 #bottomContainer table {
   border-collapse: collapse;
   width: 100%;
@@ -562,84 +394,6 @@ button:hover {
   border-radius: 6px;
 }
 
-#consoleModal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50vw;
-  height: 40vh;
-  background-color: #2c2c2c;
-  color: #dcdcdc;
-  border: 1px solid #61dafb;
-  border-radius: 10px;
-  padding-right: 5px;
-  padding-left: 8px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  overflow-y: auto;
-  box-shadow: -8px 8px 8px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-}
-
-#consoleLogs {
-  border: 0px solid #61dafb;
-  margin-top: 8px;
-  margin-bottom: 0px;
-  margin-right: 0px;
-  margin-left: 0px;
-  height: 88.7%;
-  width: 99%;
-  overflow-y: auto;
-  word-wrap: break-word; /* Wrap text around width */
-}
-
-#closeConsoleModal,
-#clearConsoleLogs {
-  cursor: pointer;
-  background-color: #61dafb;
-  font-color: #ffffff; /* White text color */
-  padding: 2px;
-  border-radius: 5px;
-  margin-left: auto;
-  margin-right: 10px;
-  margin-top: -5px;
-  transition: background-color 0.3s ease;
-  font-size: 5px;
-  width: 70px; /* Set the width */
-  height: 20px; /* Set the height */
-  display: inline-block; /* Display buttons next to each other */
-  item-align: right; /* Center the text horizontally */
-  text-align: center; /* Center the text horizontally */
-  line-height: 0px; /* Center the text vertically */
-}
-
-#clearConsoleLogs {
-  margin-left: 74.83%;
-}
-
-#closeConsoleModal:hover,
-#clearConsoleLogs:hover {
-  background-color: #457b9d;
-}
-
-/* Custom scrollbar design */
-#consoleLogs::-webkit-scrollbar {
-  width: 12px;
-}
-
-#consoleLogs::-webkit-scrollbar-thumb {
-  background-color: #61dafb;
-  border-radius: 6px;
-}
-
-#consoleLogs::-webkit-scrollbar-track {
-  background-color: #2c2c2c;
-  border-radius: 6px;
-}
-
-
 #menu {
   position: fixed;
   left: -240px;
@@ -648,8 +402,7 @@ button:hover {
   margin-top: 10vh;
   margin-bottom: 10vh;
   background-color: #333;
-  transition: 0.5s; /* Add transition property */
-
+  transition: 0.5s;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   border-radius: 10px;
@@ -659,7 +412,6 @@ button:hover {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   text-align: center;
-  transition: 0.5s;
 }
 
 #menu a {
@@ -698,15 +450,12 @@ button:hover {
   cursor: pointer;
   font-size: 16px;
   transition: 0.5s;
-  white-space: pre-line; /* Preserve newline characters */
+  white-space: pre-line;
 }
 
 #toggle-btn:hover {
-  background-color: #457b9d; /* Darker blue on hover */
-  border-color: #457b9d; /* Darker blue border on hover */
+  background-color: #457b9d;
 }
-
-
 
 #main {
   transition: margin-left 0.5s;
@@ -726,7 +475,3 @@ button:hover {
   background-color: #f5f5f5;
   border-radius: 6px;
 }
-
-
-
-
