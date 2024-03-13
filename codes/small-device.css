@@ -7,9 +7,8 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  width: 152vw;
+  width: 204vw;
   height: 100vh;
-  margin-bottom: 100px;
 }
 
 #datatable_wrapper {
@@ -21,14 +20,14 @@ body {
 }
 
 #datatable_filter label {
-  font-size: 6px;
+  font-size: 8px;
   display: inline-block;
   margin-right: 0px;
 }
 
 #datatable_filter input[type="search"] {
-  width: 250px;
-  height: 30px;
+  width: 125px;
+  height: 10px;
 }
 
 #datatable_length label {
@@ -52,7 +51,7 @@ body {
   align-items: center;
   margin-bottom: 10px;
   color: white;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 2px;
   font-weight: bold;
 }
@@ -64,13 +63,13 @@ body {
 }
 
 .dt-buttons button {
-  width: 70px;
-  height: 20px;
+  width: 50px;
+  height: 25px;
   padding: 2px 0px;
   margin-bottom: 30px;
   color: black;
   font-weight: bold;
-  font-size: 4px;
+  font-size: 8px;
 }
 
 #datatable_filter {
@@ -89,9 +88,19 @@ body {
   font-size: 0px;
 }
 
+
+
+
+
+
+
+
 #topContainer {
   display: flex;
-  width: 100vw;
+  margin-left: 221px; /* Adjusted margin */
+  margin-right: -300px; /* Adjusted margin */
+  height: 9vh;
+  max-width: 100%;
   align-items: flex-start;
   justify-content: center;
 }
@@ -105,6 +114,7 @@ body {
 
 #dynamicMenu {
   width: 200vw;
+  height: 4vh;
   background-color: #333;
   padding: 2px;
   margin-left: 5px;
@@ -122,7 +132,7 @@ body {
 #menuTitle {
   color: #61dafb;
   margin-top: .8vh;
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 1px;
 }
 
@@ -132,7 +142,7 @@ body {
   cursor: pointer;
   height: 5.7vh;
   color: #61dafb;
-  font-size: 16px;
+  font-size: 20px;
   margin-bottom: 1px;
   transition: color 0.3s ease;
 }
@@ -244,7 +254,7 @@ button:hover {
 
 #DataTableContainer {
   height: 100vh;
-  max-width: 150vw;
+  max-width: 100%;
   overflow-y: auto;
   border-radius: 10px;
   padding: 20px;
@@ -255,7 +265,7 @@ button:hover {
 
 #DataTableContainer table {
   border-collapse: collapse;
-  width: 100%;
+  max-width: 100%;
 }
 
 #DataTableContainer th,
@@ -303,7 +313,7 @@ button:hover {
 #bottomContainer {
   display: flex;
   height: 3vh;
-  max-width: 150vw;
+  max-width: 100%;
   overflow-y: auto;
   border-radius: 10px;
   padding: 0px;
@@ -320,7 +330,7 @@ button:hover {
   width: 200vw;
   font-weight: bold;
   flex-grow: 1;
-  font-size: 7px;
+  font-size: 8.5px;
   padding: 0 10px;
   border: 0px solid #61dafb;
   text-align: center;
