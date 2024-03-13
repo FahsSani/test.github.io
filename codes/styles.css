@@ -1,7 +1,7 @@
 /* CSS for mobile devices */
 @media only screen and (max-width: 767px) {
   body {
-    transform: scale(0.8); /* Adjust the scale value as needed */
+    transform: scale(0.5); /* Adjust the scale value as needed */
     transform-origin: 0 0; /* Set the origin of the scaling */
   }
 }
