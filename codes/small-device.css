@@ -7,9 +7,8 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  width: 190vw;
+  width: 152vw;
   height: 100vh;
-  overflow: hidden;
   margin-bottom: 100px;
 }
 
@@ -44,7 +43,7 @@ body {
 .paginate_button *,
 .dataTables_paginate * {
   color: white;
-  font-size: 0px;
+  font-size: 2px;
 }
 
 #title {
@@ -71,7 +70,7 @@ body {
   margin-bottom: 30px;
   color: black;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 4px;
 }
 
 #datatable_filter {
@@ -92,7 +91,6 @@ body {
 
 #topContainer {
   display: flex;
-  height: 9vh;
   width: 100vw;
   align-items: flex-start;
   justify-content: center;
@@ -106,7 +104,6 @@ body {
 }
 
 #dynamicMenu {
-  height: 7vh;
   width: 200vw;
   background-color: #333;
   padding: 2px;
@@ -129,16 +126,6 @@ body {
   margin-bottom: 1px;
 }
 
-.arrow-down {
-  position: absolute;
-  bottom: 3px;
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 15px solid #61dafb;
-  cursor: pointer;
-}
 
 .menuTab {
   display: none;
@@ -257,7 +244,7 @@ button:hover {
 
 #DataTableContainer {
   height: 100vh;
-  max-width: 190vw;
+  max-width: 150vw;
   overflow-y: auto;
   border-radius: 10px;
   padding: 20px;
@@ -316,7 +303,7 @@ button:hover {
 #bottomContainer {
   display: flex;
   height: 3vh;
-  max-width: 190vw;
+  max-width: 150vw;
   overflow-y: auto;
   border-radius: 10px;
   padding: 0px;
