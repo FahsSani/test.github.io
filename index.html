@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timechain Index</title>
+    <link rel="stylesheet" href="codes/styles.css">
+    <link rel="stylesheet" type="text/css" href="codes/DataTable/jquery.dataTables.min.css">    
+    <link rel="stylesheet" type="text/css" href="codes/DataTable/colReorder.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="codes/DataTable/fixedHeader.dataTables.min.css">
+    <style>
+        #datatable_wrapper {
+            text-align: right; /* Position the wrapper content to the right */
+        }
+
+        #datatable_filter {
+            float: right; /* Float the filter to the right */
+        }
+
+        #datatable_filter label {
+            font-size: 16px;
+            display: inline-block;
+            margin-right: 0px; /* Adjust as needed */
+        }
+
+        #datatable_filter input[type="search"] {
+            width: 250px; /* Adjust width as needed */
+            height: 30px; /* Adjust height as needed */
+        }
+
+
+        #datatable_length label {
+            font-size: 0px;
+        }
+
+        #datatable_length select {
+            width: 100px;
+        }
+
+        #datatable_info,
+        .paginate_button *,
+        .dataTables_paginate * {
+            color: white;
+            font-size: 0px;
+        }
+
+        #title {
+          display: flex;
+          justify-content: center; /* Aligns items horizontally at the center */
+          align-items: ceter; /* Aligns items vertically at the center */
+          margin-bottom: 10px; /* Adjust spacing */
+          color: white;
+          font-size: 20px;
+          letter-spacing: 2px;
+          font-weight: bold;
+          }
+
+        #dt-buttons {
+          display: flex;
+          justify-content: center; /* Align items horizontally at the center */
+          align-items: flex-end; /* Align items vertically at the bottom */
+        }
+
+        .dt-buttons button {
+          width: 70px;
+          height: 20px;
+          padding: 2px 0px; /* Adjust padding to change the margins around the text */
+          margin-bottom: 30px; /* Adjust the margin-top value as needed */
+          color: black;
+          font-weight: bold;
+          font-size: 12px;
+        }
+
+        #datatable_filter {
+          display: flex;
+          margin-top: -30px; /* Adjust the margin-top value as needed */
+          margin-bottom: -15px; /* Adjust the margin-top value as needed */
+          justify-content: center; /* Align items horizontally at the center */
+          align-items: flex-end; /* Align items vertically at the bottom */
+        }
+
+        #datatables_buttons_info {
+          font-size: 0px;
+        }
+
+        .dt-button-info {
+          font-size: 0px;
+       }
+    </style>
+</head>
+
+<body>
+    <button id="toggle-btn" onclick="toggleMenu()">E
+    N
+    T
+    I
+    T
+    I
+    E
+    S</button>
+    <div id="menu">
+        <!-- Populated menu content will go here -->
+    </div>
+    <div id="main"></div>
+    <div id="topContainer">
+        <div id="topmenuContainer">
+            <div id="dynamicMenu">
+                <div id="menuTitle">TIMECHAIN INDEX</div>
+            </div>
+        </div>
+    </div>
+    <div id="dataContainer">
+        <!-- Data Tab -->
+        <div id="dataTab" class="tab">
+            <div class="data-container">
+                <div id="DataTableContainer" class="DataTableContainer">
+                    <div id="title">                          
+                        <span id="title"></span>
+                    </div>
+                    <div class="dt-buttons">
+                        <div id="datatables_buttons_info" class="dt-button-info" style="opacity: 0; font-size: 0px; display: none;">
+
+                    </div>
+                    <table id="datatable" class="display" style="width: 100%;">
+                        <thead>
+                            <!-- Header rows go here -->
+                        </thead>
+                        <tbody>
+                            <!-- Table rows will be added dynamically by DataTables -->
+                        </tbody>
+                        <tfoot style="display: none;">
+                            <tr>
+                                <th>Total Addresses:</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                          </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="bottomContainer">
+        <div class="sub-container center-container">
+            <p id="bitcoinPrice">Bitcoin Price: Loading...</p>
+            <p id="satsPerDollar">Sats/$: Loading...</p>
+            <p id="blockHeight">Block Height: Loading...</p>
+            <p id="halvingcountdown">Blocks Till Halving: Loading...</p>
+            <p id="btcsupply">Current Supply: Loading...</p>
+            <p id="feeRates">Fee Rates: Loading...</p>
+        </div>
+    </div>
+    <script src="codes/DataTable/jquery-3.6.0.min.js"></script>
+    <script src="codes/DataTable/jquery.dataTables.min.js"></script>
+    <script src="codes/DataTable/dataTables.colReorder.min.js"></script>
+    <script src="codes/DataTable/dataTables.fixedHeader.min.js"></script>
+    <script src="codes/DataTable/dataTables.keyTable.min.js"></script>
+    <script src="codes/DataTable/dataTables.select.min.js"></script>
+    <script src="codes/DataTable/jszip.min.js"></script>
+    <script src="codes/DataTable/pdfmake.min.js"></script>
+    <script src="codes/DataTable/vfs_fonts.js"></script>
+    <script src="codes/DataTable/dom-to-image.min.js"></script>
+    <script src="codes/DataTable/jspdf.umd.min.js"></script>
+    <script src="codes/DataTable/dataTables.buttons.min.js"></script>
+    <script src="codes/DataTable/buttons.html5.min.js"></script>
+    <script src="codes/DataTable/axios.min.js"></script>
+    <script src="codes/shared.js"></script>
+    <script src="codes/main.js"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const main = document.getElementById('main');
+            const toggleBtn = document.getElementById('toggle-btn');
+
+            if (menu.style.left === '0px') {
+                menu.style.left = '-250px';
+                main.style.marginLeft = '0';
+                toggleBtn.style.left = '0';
+            } else {
+                menu.style.left = '0';
+                main.style.marginLeft = '16vw';
+                toggleBtn.style.left = '16vw';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateData();
+            setInterval(updateData, 60000);
+        });
+
+        function updateData() {
+            axios.get('https://mempool.space/api/v1/prices')
+                .then(response => {
+                    const bitcoinUSDValue = response.data.USD;
+                    const formattedBitcoinPrice = formatNumberWithSeparator(Math.floor(bitcoinUSDValue));
+                    document.getElementById('bitcoinPrice').innerHTML = `Bitcoin Price: <span style="color: red;">$${formattedBitcoinPrice}</span>&nbsp`;
+
+                    const satsPerDollar = Math.floor(100000000 / bitcoinUSDValue);
+                    const formattedSatsPerDollar = formatNumberWithSeparator(satsPerDollar);
+                    document.getElementById('satsPerDollar').innerHTML = ` |&nbspSats/$: <span style="color: red;">${formattedSatsPerDollar}</span>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching Bitcoin price:', error);
+                });
+
+            axios.get('https://mempool.space/api/blocks/tip/height')
+                .then(response => {
+                    const blockHeight = response.data;
+                    document.getElementById('blockHeight').innerHTML = ` | Block Height: <span style="color: red;">${blockHeight.toLocaleString('en-US')}</span>&nbsp`;
+                    
+                    halvingcountdown = 840000 - blockHeight;
+                    document.getElementById('halvingcountdown').innerHTML = ` | Blocks Till Halving: <span style="color: red;">${halvingcountdown.toLocaleString('en-US')}</span>&nbsp`;
+
+                    let btcsupply = 0;
+                    for (let i = 0; i < Math.floor(blockHeight / 210000); i++) {
+                        const supplyInInterval = 210000 * (50 / Math.pow(2, i));
+                        btcsupply += supplyInInterval;
+                    }
+                    const remainingBlocks = blockHeight % 210000;
+                    const lastIntervalSupply = remainingBlocks * (50 / Math.pow(2, Math.floor(blockHeight / 210000)));
+                    btcsupply += lastIntervalSupply;
+                   
+                    document.getElementById('btcsupply').innerHTML = `|&nbspCurrent Supply: <span style="color: red; font-weight: bold">${btcsupply.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>&nbsp`;
+                })
+                .catch(error => {
+                    console.error('Error fetching block height:', error);
+                });
+
+            axios.get('https://mempool.space/api/v1/fees/recommended')
+                .then(response => {
+                    const feeRates = response.data;
+                    const lowPriority = feeRates.hourFee;
+                    const mediumPriority = feeRates.halfHourFee;
+                    const highPriority = feeRates.fastestFee;
+
+                    document.getElementById('feeRates').innerHTML = `|&nbspFees: Low Priority<span style="color: red;">${lowPriority}</span> Medium Priority<span style="color: red;">${mediumPriority}</span> HighPriority<span style="color: red;">${highPriority}</span>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching fee rates:', error);
+                });
+        }
+
+        function formatNumberWithSeparator(number) {
+            return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    </script>
+</body>
+</html>
