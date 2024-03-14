@@ -274,9 +274,9 @@ body {
   position: fixed;
   left: -240px;
   width: 16vw;
-  height: 80vh;
-  margin-top: 10vh;
-  margin-bottom: 10vh;
+  height: 90%;
+  margin-top: 10%;
+  margin-bottom: 10%;
   background-color: #333;
   transition: 0.5s;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
