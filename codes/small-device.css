@@ -126,7 +126,7 @@ body {
 #menuTitle {
   color: #61dafb;
   margin-top: .3vh;
-  font-size: 20px;
+  font-size: 24px;
   margin-bottom: 1px;
 }
 
@@ -211,7 +211,7 @@ body {
   font-weight: bold;
   flex-grow: 1;
   font-size: 8px;
-  padding: 0 10px;
+  padding: 0 5px;
   border: 0px solid #61dafb;
   text-align: center;
 }
