@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-right: 0px;
+            margin-left: 0px;
+            height: 300px;
+            width: 600px;
+            border: 0px solid #61dafb;
+            text-align: center;
+            background-color: #2c2c2c;
+            color: #dcdcdc;
+        }
+
+        h2 {
+            margin-top: 0px;
+            color: #61dafb;
+            display: inline-block;
+        }
+
+        .closeBtn {
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            background-color: #61dafb;
+            font-weight: bold;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .closeBtn:hover {
+            background-color: #4285f4;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Close button -->
+    <button class="closeBtn" onclick="closePopup()">Close</button>
+
+    <h2>About</h2>
+    <p>Welcome to TimeChainIndex – your ultimate guide to tracking Bitcoin addresses.</p>
+    <p>Here, you'll discover all the Bitcoin addresses associated with major exchanges, ETFs, and influential figures.</p>
+    <p>We provide real-time insights in a user-friendly format, making it easy for visitors to stay updated.</p>
+    <p>If you find TimeChainIndex useful and would like to support its growth, feel free to donate to the following Bitcoin lightning addresses: <a style="color: #61dafb;">sani@walletofsatoshi.com</a> and <a style="color: #61dafb;">sani@blink.sv</a>. Your contributions help keep this project going strong.</p>
+    <p>You can also connect with me on X at <a style="color: #61dafb;" href="https://x.com/SaniExp" target="_blank" class="twitter">SaniExp</a>.<p></p>
+
+    <script>
+        function closePopup() {
+            window.parent.closePopup();
+        }
+    </script>
+</body>
+
+</html>

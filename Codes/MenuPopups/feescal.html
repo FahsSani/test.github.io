@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Fee Calculator</title>
+    <style>
+        body {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-right: 0px;
+            margin-left: 0px;
+            height: 410px;
+            width: 500px;
+            border: 0px solid #61dafb;
+            text-align: center;
+            background-color: #2c2c2c;
+            color: #dcdcdc;
+        }
+
+        #popupContainer iframe {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-right: 0px;
+            margin-left: 0px;
+            height: 450px;
+            width: 450px;
+            border: none;
+        }
+
+        h2 {
+            margin-top: 0px;
+            color: #61dafb;
+        }
+        label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        input[type="number"] {
+            text-align: center;
+            width: 50px;
+        }
+        span {
+            display: inline-block;
+            margin-left: 10px;
+        }
+        #totalValues {
+            margin-top: 0px;
+        }
+
+        #feeContainer {
+            margin-top: 5px;
+            border: 1px solid #61dafb;
+            border-radius: 10px;
+            padding: 5px;
+            width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #2c2c2c;
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+        }
+        #lowFee, #mediumFee, #highFee, #customFee {
+            margin-top: 5px;
+        }
+        #customFeeValue {
+            color: #61dafb;
+        }
+        .closeBtn {
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            background-color: #61dafb;
+            font-weight: bold;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .closeBtn:hover {
+            background-color: #4285f4;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Close button -->
+    <button class="closeBtn" onclick="closePopup()">Close</button>
+
+    <h2>Transaction Fee Calculator</h2>
+    <form id="sizeCalculator">
+        <label for="scriptType">Select Script Type:</label>
+        <select id="scriptType" onchange="updateTotals()">
+            <option value="legacy" data-overhead="10" data-inputRate="148" data-outputRate="34">Legacy (1)</option>
+            <option value="nestedSegwit" data-overhead="10" data-inputRate="104" data-outputRate="32">Nested SegWit (3)</option>
+            <option value="nativeSegwit" data-overhead="10.5" data-inputRate="68" data-outputRate="31">Native SegWit (bc1q)</option>
+            <option value="taproot" data-overhead="10.5" data-inputRate="57.5" data-outputRate="43">Taproot (bc1p)</option>
+        </select><br><br>
+        <div id="walletSetup">
+            <label for="walletType">Wallet Setup:</label>
+            <select id="walletType" onchange="updateTotals()">
+                <option value="singleSig" data-value="1">Single Sig.</option>
+                <option value="multiSig2" data-value="2">MultiSig, 2 Signatures</option>
+                <option value="multiSig3" data-value="3">MultiSig, 3 Signatures</option>
+                <option value="multiSig4" data-value="4">MultiSig, 4 Signatures</option>
+                <option value="multiSig5" data-value="5">MultiSig, 5 Signatures</option>
+                <option value="multiSig6" data-value="6">MultiSig, 6 Signatures</option>
+                <option value="multiSig7" data-value="7">MultiSig, 7 Signatures</option>
+                <option value="multiSig8" data-value="8">MultiSig, 8 Signatures</option>
+                <option value="multiSig9" data-value="9">MultiSig, 9 Signatures</option>
+                <option value="multiSig10" data-value="10">MultiSig, 10 Signatures</option>
+            </select>
+        </div><br>
+        <div id="inputSection">
+            <label for="inputQuantity">Number of Inputs:</label>
+            <input type="number" id="inputQuantity" min="1" value="1" onchange="updateTotals()">
+            <span id="inputsize">Size/ 1 Input: 148 vB</span>
+        </div><br>
+        <div id="outputSection">
+            <label for="outputQuantity">Number of Outputs:</label>
+            <input type="number" id="outputQuantity" min="1" value="1" onchange="updateTotals()">
+            <span id="outputsize">Size/ 1 Output: 34 vB</span>
+        </div><br>
+        <div id="totalValues">
+            <div id="overheadSection">
+                <span id="totalOverhead">Overhead Size: 10 vB</span>
+            </div>
+            <span id="totalInputValue">Total Input Size: 148 vB</span><br>
+            <span id="totalOutputValue">Total Output Size: 34 vB</span><br>
+            <span id="totalsize">Total Size: 192 vB</span><br><br>
+        </div>
+    </form>
+
+    <div id="feeContainer">
+        <div id="lowFee">Low Priority: <span id="lowFeeValue">0 sat/vB - Total Fee: 0 sat</span></div>
+        <div id="mediumFee">Medium Priority: <span id="mediumFeeValue">0 sat/vB - Total Fee: 0 sat</span></div>
+        <div id="highFee">High Priority: <span id="highFeeValue">0 sat/vB - Total Fee: 0 sat</span></div>
+        <div id="customFee">
+            Custom Fee: <input type="number" id="customFeeInput" min="1" value="1" onchange="updateTotals()">
+            <span id="customFeeValue"> - Total Fee: 1 sat</span>
+        </div>
+    </div>
+
+    <script>
+        function fetchFeeDataAndUpdate() {
+            fetch('https://mempool.space/api/v1/fees/recommended')
+                .then(response => response.json())
+                .then(data => {
+                    const lowFee = data.hourFee.toLocaleString(undefined, { maximumFractionDigits: 0 });
+                    const mediumFee = data.halfHourFee.toLocaleString(undefined, { maximumFractionDigits: 0 });
+                    const highFee = data.fastestFee.toLocaleString(undefined, { maximumFractionDigits: 0 });
+
+                    const lowFeeValue = (lowFee * totalsize).toLocaleString(undefined, { maximumFractionDigits: 0 });
+                    const mediumFeeValue = (mediumFee * totalsize).toLocaleString(undefined, { maximumFractionDigits: 0 });
+                    const highFeeValue = (highFee * totalsize).toLocaleString(undefined, { maximumFractionDigits: 0 });
+
+                    document.getElementById('lowFeeValue').textContent = `${lowFee} sat/vB - Total Fee: ${lowFeeValue} sat`;
+                    document.getElementById('mediumFeeValue').textContent = `${mediumFee} sat/vB - Total Fee: ${mediumFeeValue} sat`;
+                    document.getElementById('highFeeValue').textContent = `${highFee} sat/vB - Total Fee: ${highFeeValue} sat`;
+                })
+                .catch(error => console.error('Error fetching fee data:', error));
+        }
+
+        function calculateTotalFee() {
+            const customFeeInput = document.getElementById('customFeeInput').value;
+            const customFeeTotal = (customFeeInput * totalsize).toLocaleString(undefined, { maximumFractionDigits: 0 });
+            document.getElementById('customFeeValue').textContent = ` - Total Fee: ${customFeeTotal} sat`;
+        }
+
+        function calculateTotalSize(totalInputSize, totalOutputSize, totalOverheadSize) {
+            totalsize = totalInputSize + totalOutputSize + totalOverheadSize;
+            document.getElementById('totalsize').textContent = `Total Size: ${totalsize.toLocaleString(undefined, { maximumFractionDigits: 1 })} vB`;
+            return totalsize;
+        }
+
+        function updateTotals() {
+            const selectedScriptType = document.getElementById('scriptType').value;
+            const selectedWalletType = document.getElementById('walletType').value;
+
+            const overhead = parseFloat(document.getElementById('scriptType').selectedOptions[0].getAttribute('data-overhead'));
+            const inputRate = parseFloat(document.getElementById('scriptType').selectedOptions[0].getAttribute('data-inputRate'));
+            const outputRate = parseFloat(document.getElementById('scriptType').selectedOptions[0].getAttribute('data-outputRate'));
+
+            const inputQuantity = parseInt(document.getElementById('inputQuantity').value);
+            const outputQuantity = parseInt(document.getElementById('outputQuantity').value);
+            const walletSetupValue = parseInt(document.getElementById('walletType').selectedOptions[0].getAttribute('data-value'));
+
+            const totalInputSize = inputQuantity * inputRate * walletSetupValue;
+            const totalOutputSize = outputQuantity * outputRate;
+            const totalOverheadSize = overhead;
+
+            document.getElementById('inputsize').textContent = `Size/ 1 Input: ${inputRate} vB`;
+            document.getElementById('outputsize').textContent = `Size/ 1 Output: ${outputRate} vB`;
+
+            document.getElementById('totalOverhead').textContent = `Overhead Size: ${totalOverheadSize.toLocaleString(undefined, { maximumFractionDigits: 1 })} vB`;
+            document.getElementById('totalInputValue').textContent = `Total Input Size: ${totalInputSize.toLocaleString(undefined, { maximumFractionDigits: 1 })} vB`;
+            document.getElementById('totalOutputValue').textContent = `Total Output Size: ${totalOutputSize.toLocaleString(undefined, { maximumFractionDigits: 1 })} vB`;
+
+            calculateTotalSize(totalInputSize, totalOutputSize, totalOverheadSize); 
+            fetchFeeDataAndUpdate();
+            calculateTotalFee();
+        }
+        updateTotals()
+
+        function closePopup() {
+            window.parent.closePopup();
+        }
+    </script>
+</body>
+</html>

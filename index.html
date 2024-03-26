@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=1366, height=768, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Codes/favicon.ico">
     <title>Timechain Index</title>
-    <link rel="stylesheet" href="codes/styles.css">
-    <link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="codes/small-device.css" />
-    <link rel="stylesheet" type="text/css" href="codes/DataTable/jquery.dataTables.min.css">    
-    <link rel="stylesheet" type="text/css" href="codes/DataTable/colReorder.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="codes/DataTable/fixedHeader.dataTables.min.css">
-</head>
+    <link rel="stylesheet" href="Codes/styles.css">
+    <link rel="stylesheet" type="text/css" href="Codes/DataTable/jquery.dataTables.min.css">    
+    <link rel="stylesheet" type="text/css" href="Codes/DataTable/colReorder.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="Codes/DataTable/fixedHeader.dataTables.min.css">
+    <style>
+    </style>
+    </head>
 <body>
     <button id="toggle-btn" onclick="toggleMenu()">E
     N
@@ -26,7 +28,18 @@
     <div id="topContainer">
         <div id="topmenuContainer">
             <div id="dynamicMenu">
-                <div id="menuTitle">TIMECHAIN INDEX</div>
+                <div id="menuTitle">Timechain Index</div>
+                <div class="arrow-down" id="menuArrow"></div>
+                <div id="ExpandedMenu1"></div>
+            </div>
+        </div>
+        <div id="searchContainer">
+            <!-- Search Tab -->
+            <div id="searchTab" class="tab">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Fetch addresses details (comma-separated): address 1, address 2, address 3 ...">
+                    <div class="fetch-arrow" id="searchFetchArrow">➤</div>
+                </div>
             </div>
         </div>
     </div>
@@ -40,28 +53,26 @@
                     </div>
                     <div class="dt-buttons">
                         <div id="datatables_buttons_info" class="dt-button-info" style="opacity: 0; font-size: 0px; display: none;">
-
                     </div>
                     <table id="datatable" class="display" style="width: 100%;">
                         <thead>
-                            <!-- Header rows go here -->
                         </thead>
                         <tbody>
-                            <!-- Table rows will be added dynamically by DataTables -->
                         </tbody>
-                        <tfoot style="display: none;">
-                            <tr>
-                                <th>Total Addresses:</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                          </tfoot>
+                            <tfoot style="display: none;">
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
                     </table>
                 </div>
             </div>
@@ -73,26 +84,32 @@
             <p id="satsPerDollar">Sats/$: Loading...</p>
             <p id="blockHeight">Block Height: Loading...</p>
             <p id="halvingcountdown">Blocks Till Halving: Loading...</p>
-            <p id="btcsupply">Current Supply: Loading...</p>
-            <p id="feeRates">Fee Rates: Loading...</p>
+            <p id="currentsupply">Current Supply: Loading...</p>
+            <p id="realfinalsupply">Final Supply: Loading...</p>
+            <p id="feeRates"></p>
         </div>
     </div>
-    <script src="codes/DataTable/jquery-3.6.0.min.js"></script>
-    <script src="codes/DataTable/jquery.dataTables.min.js"></script>
-    <script src="codes/DataTable/dataTables.colReorder.min.js"></script>
-    <script src="codes/DataTable/dataTables.fixedHeader.min.js"></script>
-    <script src="codes/DataTable/dataTables.keyTable.min.js"></script>
-    <script src="codes/DataTable/dataTables.select.min.js"></script>
-    <script src="codes/DataTable/jszip.min.js"></script>
-    <script src="codes/DataTable/pdfmake.min.js"></script>
-    <script src="codes/DataTable/vfs_fonts.js"></script>
-    <script src="codes/DataTable/dom-to-image.min.js"></script>
-    <script src="codes/DataTable/jspdf.umd.min.js"></script>
-    <script src="codes/DataTable/dataTables.buttons.min.js"></script>
-    <script src="codes/DataTable/buttons.html5.min.js"></script>
-    <script src="codes/DataTable/axios.min.js"></script>
-    <script src="codes/shared.js"></script>
-    <script src="codes/main.js"></script>
+    <div id="popupContainer">
+    </div>
+    <script src="Codes/DataTable/jquery-3.6.0.min.js"></script>
+    <script src="Codes/DataTable/jquery.dataTables.min.js"></script>
+    <script src="Codes/DataTable/dataTables.colReorder.min.js"></script>
+    <script src="Codes/DataTable/dataTables.fixedHeader.min.js"></script>
+    <script src="Codes/DataTable/dataTables.keyTable.min.js"></script>
+    <script src="Codes/DataTable/dataTables.select.min.js"></script>
+    <script src="Codes/DataTable/jszip.min.js"></script>
+    <script src="Codes/DataTable/pdfmake.min.js"></script>
+    <script src="Codes/DataTable/vfs_fonts.js"></script>
+    <script src="Codes/DataTable/dom-to-image.min.js"></script>
+    <script src="Codes/DataTable/jspdf.umd.min.js"></script>
+    <script src="Codes/DataTable/dataTables.buttons.min.js"></script>
+    <script src="Codes/DataTable/buttons.html5.min.js"></script>
+    <script src="Codes/DataTable/axios.min.js"></script>
+    <script src="Codes/DataTable/dom-to-image.min.js"></script>
+    <script src="Codes/DataTable/chart.js"></script>
+    <script src="Codes/shared.js"></script>
+    <script src="Codes/main.js"></script>
+    <script src="Codes/cal.js"></script>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
@@ -110,49 +127,87 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            updateData();
-            setInterval(updateData, 60000);
-        });
+
+        function openPopup(link) {
+            var popupContainer = document.getElementById('popupContainer');
+            var isOpen = popupContainer.style.display === 'block';
+
+            if (isOpen) {
+                closePopup();
+            } 
+
+            popupContainer.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            var iframe = document.createElement('iframe');
+            iframe.src = 'Codes/MenuPopups/' + link;
+            popupContainer.appendChild(iframe);
+            iframe.onload = function() {
+                this.style.height = (this.contentDocument.body.scrollHeight)+ 'px';
+                this.style.width =( this.contentDocument.body.scrollWidth)+ 'px';
+            };
+        }
+
+        function closePopup() {
+            document.getElementById('popupContainer').style.display = 'none';
+            document.body.style.overflow = '';
+            var iframe = document.querySelector('#popupContainer iframe');
+            iframe.parentNode.removeChild(iframe);
+        }
 
         function updateData() {
-            axios.get('https://mempool.space/api/v1/prices')
+            axios.get('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
                 .then(response => {
-                    const bitcoinUSDValue = response.data.USD;
+                    const bitcoinUSDValue = response.data.bitcoin.usd;
                     const formattedBitcoinPrice = formatNumberWithSeparator(Math.floor(bitcoinUSDValue));
-                    document.getElementById('bitcoinPrice').innerHTML = `Bitcoin Price: <span style="color: red;">$${formattedBitcoinPrice}</span>&nbsp`;
+                    document.getElementById('bitcoinPrice').innerHTML = `Bitcoin Price: <span style="color: #61dafb;">$${formattedBitcoinPrice}</span>&nbsp`;
 
                     const satsPerDollar = Math.floor(100000000 / bitcoinUSDValue);
                     const formattedSatsPerDollar = formatNumberWithSeparator(satsPerDollar);
-                    document.getElementById('satsPerDollar').innerHTML = ` |&nbspSats/$: <span style="color: red;">${formattedSatsPerDollar}</span>`;
+                    document.getElementById('satsPerDollar').innerHTML = ` |&nbspSats/$: <span style="color: #61dafb;">${formattedSatsPerDollar}</span>`;
                 })
                 .catch(error => {
                     console.error('Error fetching Bitcoin price:', error);
                 });
 
-            axios.get('https://mempool.space/api/blocks/tip/height')
+            axios.get('https://blockchain.info/q/getblockcount')
                 .then(response => {
                     const blockHeight = response.data;
-                    document.getElementById('blockHeight').innerHTML = ` | Block Height: <span style="color: red;">${blockHeight.toLocaleString('en-US')}</span>&nbsp`;
+                    document.getElementById('blockHeight').innerHTML = ` | Block Height: <span style="color: #61dafb;">${blockHeight.toLocaleString('en-US')}</span>&nbsp`;
                     
                     halvingcountdown = 840000 - blockHeight;
-                    document.getElementById('halvingcountdown').innerHTML = ` | Blocks Till Halving: <span style="color: red;">${halvingcountdown.toLocaleString('en-US')}</span>&nbsp`;
+			if (halvingcountdown >= 0) {
+			    document.getElementById('halvingcountdown').innerHTML = ` | Blocks Till Halving: <span style="color: #61dafb;">${halvingcountdown.toLocaleString('en-US')}</span>&nbsp`;
+			} else {
+			    document.getElementById('halvingcountdown').innerHTML = ``;
+			}
 
-                    let btcsupply = 0;
-                    for (let i = 0; i < Math.floor(blockHeight / 210000); i++) {
-                        const supplyInInterval = 210000 * (50 / Math.pow(2, i));
-                        btcsupply += supplyInInterval;
-                    }
-                    const remainingBlocks = blockHeight % 210000;
-                    const lastIntervalSupply = remainingBlocks * (50 / Math.pow(2, Math.floor(blockHeight / 210000)));
-                    btcsupply += lastIntervalSupply;
-                   
-                    document.getElementById('btcsupply').innerHTML = `|&nbspCurrent Supply: <span style="color: red; font-weight: bold">${btcsupply.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })}</span>&nbsp`;
-                })
-                .catch(error => {
-                    console.error('Error fetching block height:', error);
-                });
+			let destroyedcoinbase = 50 + 28.95502904;
+			let finalsupply = 20999999.97690000
+			let realcurrentsupply = 0;
+			let currentsupply = 0;
+			for (let i = 0; i < Math.floor(blockHeight / 210000); i++) {
+				const supplyInInterval = 210000 * (50 / Math.pow(2, i));
+				currentsupply += supplyInInterval;
+			}
+			const remainingBlocks = blockHeight % 210000;
+			const lastIntervalSupply = remainingBlocks * (50 / Math.pow(2, Math.floor(blockHeight / 210000)));
+			currentsupply += lastIntervalSupply;
+		    
+			realcurrentsupply = currentsupply - destroyedcoinbase
+			let realfinalsupply = finalsupply - destroyedcoinbase
+			let percmined = realcurrentsupply / realfinalsupply * 100
+			
+			document.getElementById('currentsupply').innerHTML = `|&nbspCurrent Supply: <span style="color: #61dafb; font-weight: bold">${realcurrentsupply.toLocaleString('en-US', { minimumFractionDigits: 8, maximumFractionDigits: 8 })} (${percmined.toFixed(4)}%)</span>&nbsp`;
+			document.getElementById('realfinalsupply').innerHTML = `|&nbspDiluted Supply: <span style="color: #61dafb; font-weight: bold">${realfinalsupply.toLocaleString('en-US', { minimumFractionDigits: 8, maximumFractionDigits: 8 })}</span>&nbsp`;
 
+
+		})
+		.catch(error => {
+			console.error('Error fetching block height:', error);
+		});
+
+        }
+		function txnfees() {
             axios.get('https://mempool.space/api/v1/fees/recommended')
                 .then(response => {
                     const feeRates = response.data;
@@ -160,16 +215,32 @@
                     const mediumPriority = feeRates.halfHourFee;
                     const highPriority = feeRates.fastestFee;
 
-                    document.getElementById('feeRates').innerHTML = `|&nbspFees: Low Priority<span style="color: red;">${lowPriority}</span> Medium Priority<span style="color: red;">${mediumPriority}</span> HighPriority<span style="color: red;">${highPriority}</span>`;
+                    document.getElementById('feeRates').innerHTML = `|&nbspFees: Low Priority<span style="color: #61dafb;">${lowPriority}</span>
+                                Medium Priority<span style="color: #61dafb;">${mediumPriority}</span> HighPriority<span style="color: #61dafb;">${highPriority}</span>`;
                 })
                 .catch(error => {
                     console.error('Error fetching fee rates:', error);
-                });
-        }
-
+                })};
+				
         function formatNumberWithSeparator(number) {
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
+
+        function closePopup() {
+            document.getElementById('popupContainer').style.display = 'none';
+            document.body.style.overflow = '';
+            var iframe = document.querySelector('#popupContainer iframe');
+            if (iframe) {
+                iframe.parentNode.removeChild(iframe);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateData();
+            setInterval(updateData, 60000);
+        });
+
+
     </script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+    /* Zoom out the content */
+    html, body {
+      overflow-x: hidden;
+      transform: scale(0.8); /* Adjust this value as needed */
+      transform-origin: left top;
+    }
+
+    /* Adjust specific elements if needed */
+    .container {
+      max-width: 100%;
+    }

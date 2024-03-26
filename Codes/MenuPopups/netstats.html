@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            margin-right: 0px;
+            margin-left: 0px;
+            height: 400px;
+            width: 800px;
+            border: 0px solid #61dafb;
+            text-align: center;
+            background-color: #2c2c2c;
+            color: #dcdcdc;
+        }
+
+
+        .image-container {
+            max-width: 500px;
+            max-height: 500px;
+            overflow: auto; 
+            margin: 0 auto;
+        }
+
+        .image-container img {
+            max-width: 90%; 
+            height: auto; 
+            display: block; 
+            margin: 0 auto;
+        }
+
+        h2 {
+            margin-top: 0px;
+            color: #61dafb;
+            display: inline-block;
+        }
+
+        .arrow-link {
+            font-size: 20px;
+            color: #61dafb; 
+            text-decoration: none;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .arrow-link:hover {
+            text-decoration: none; 
+        }
+
+        .closeBtn {
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            background-color: #61dafb;
+            font-weight: bold;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .closeBtn:hover {
+            background-color: #4285f4;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Close button -->
+    <button class="closeBtn" onclick="closePopup()">Close</button>
+
+    <h2>Timechain Stats<a class="arrow-link" href="http://www.timechainstats.com" target="_blank">&#8599;</a></h2>
+    <div class="image-container">
+        <img src="timechainstats.png" alt="Timechain Stats">
+    </div>
+    <p>Bitcoin-ONLY data dashboard with live BTC price, on-chain metrics, heatmaps, 24-hour stats, charts and more.</p>
+
+    <h2>Timechain Calendar<a class="arrow-link" href="http://www.timechaincalendar.com" target="_blank">&#8599;</a></h2>
+    <div class="image-container">
+        <img src="timechaincalendar.png" alt="Timechain Calendar">
+    </div>
+    <p>Live data from the Bitcoin timechain with past block lookup and other calendar features.</p>
+
+    <h2>Mempool.Space<a class="arrow-link" href="http://www.mempool.space" target="_blank">&#8599;</a></h2>
+    <div class="image-container">
+        <img src="mempoolspace.png" alt="Timechain Calendar">
+    </div>
+    <p>Explore the full Bitcoin ecosystem®, See the real-time status of your transactions, browse network stats, and more.</p>
+
+
+    <script>
+        function closePopup() {
+            window.parent.closePopup();
+        }
+    </script>
+</body>
+</html>
